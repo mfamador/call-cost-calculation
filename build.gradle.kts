@@ -1,3 +1,6 @@
+group = "com.github.mfamador"
+version = "1.0"
+
 plugins {
     application
     kotlin("jvm") version "1.3.30"
@@ -6,9 +9,6 @@ plugins {
 application {
     mainClassName = "com.github.mfamador.callcost.MainKt"
 }
-
-group = "com.github.mfamador"
-version = "1.0"
 
 tasks.withType<Test> {
     useJUnitPlatform()
