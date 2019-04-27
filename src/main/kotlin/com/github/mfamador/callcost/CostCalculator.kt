@@ -7,12 +7,10 @@ import java.time.LocalTime.parse
 
 object CostCalculator {
 
-    fun calculate(callLogFile: String): Double {
-        val records = File(callLogFile)
-                .useLines { it.toList() }
-                .map { parseRecord(it) }
-                .groupBy { it.from }
+    fun calculate(callLogFile: String) = calculate(File(callLogFile).useLines { it.toList() })
 
+    fun calculate(callLog: List<String>): Double {
+        val records = callLog.map { parseRecord(it) }.groupBy { it.from }
         val durations = records.map { it.key to it.value.sumByDouble { it.duration.toDouble() } }
         val maxDuration = durations.maxBy { it.second }?.second
         val discardCallers = durations.filter { it.second == maxDuration }.map { it.first }
