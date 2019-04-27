@@ -1,4 +1,4 @@
-package com.github.mfamador.callcost.calculation
+package com.github.mfamador.callcost
 
 import com.github.mfamador.callcost.model.CallRecord
 import java.io.File
