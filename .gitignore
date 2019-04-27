@@ -31,3 +31,4 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 
 .idea/
+/.gradletasknamecache
