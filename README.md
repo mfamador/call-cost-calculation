@@ -1,12 +1,4 @@
-# Call cost calculation exercise
-
-This exercise is part of Talkdesk's recruitment process. Please do not share it publicly.
-
-It is up to you how much effort you put into it and exactly what you deliver; we would expect you to spend one or two hours on it, and that you deliver at least a piece of working code that we'll be able to run on our machines* and that will solve the problem at hand.
-
-It is also up to you whether there's any need for documentation (or anything else), depending on the problem you've been assigned or the method you chose to solve it.
-
-## Exercise
+# Exercise
 
 Given a list of calls with the following format:
 
@@ -37,6 +29,9 @@ As for output, we're expecting that your code print the total in decimal format,
 
   15.05
 
-## Other notes
 
-* - "our machines" usually run Ruby, Java, C#, C, C++, PHP, Perl, Python, Node, Elixir, Clojure, Kotlin, Go and Scala. If you want to go with a different programming language it shouldn't be a problem, but please do check with us first. We strongly encourage you to use a language you're familiar with.
+# Execute exercise
+
+./gradlew build
+./calculate-cost.sh input_file
+

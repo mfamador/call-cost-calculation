@@ -1,21 +1,26 @@
 plugins {
-    base
-    kotlin("jvm") version "1.3.20" apply false
+    application
+    kotlin("jvm") version "1.3.21"
 }
 
-allprojects {
+application {
+    mainClassName = "com.github.mfamador.callcost.MainKt"
+}
 
-    group = "com.github.mfamador"
+group = "com.github.mfamador"
+version = "1.0"
 
-    version = "1.0"
-
-    repositories {
-        jcenter()
-    }
+tasks.withType<Test> {
+    useJUnitPlatform()
 }
 
 dependencies {
-    subprojects.forEach {
-        archives(it)
-    }
+    compile(kotlin("stdlib"))
+
+    testImplementation("org.assertj:assertj-core:3.4.1")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.4.2")
+}
+
+repositories {
+    jcenter()
 }
