@@ -14,10 +14,10 @@ object CostCalculator {
         val recordsByCaller = callLog.map { parseRecord(it) }.groupBy { it.from }
         val durations = recordsByCaller.map { it.key to it.value.sumByDouble { it.duration.toDouble() } }
         val maxDuration = durations.maxBy { it.second }?.second
-        val discardCallers = durations.filter { it.second == maxDuration }.map { it.first }
+        val callersNotCharged = durations.filter { it.second == maxDuration }.map { it.first }
 
         return recordsByCaller.map { it.key to it.value.sumByDouble { it.cost.toDouble() } }
-                .filter { !discardCallers.contains(it.first) }.map { it.second }.sum().div(100)
+                .filter { !callersNotCharged.contains(it.first) }.map { it.second }.sum().div(100)
     }
 
     private fun parseRecord(callLog: String): CallRecord {
