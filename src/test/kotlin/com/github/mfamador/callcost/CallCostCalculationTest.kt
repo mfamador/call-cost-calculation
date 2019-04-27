@@ -52,7 +52,7 @@ class CallCostCalculationTest {
     }
 
     @Test
-    fun `If only there's only callers with longest calls the total cost is zero`() {
+    fun `If all callers have the longest calls the total cost is zero`() {
         val recordList = listOf(
                 "09:10:30;09:15:10;+351914374373;+351215355312",
                 "09:10:30;09:15:10;+351217538222;+351215355312")
