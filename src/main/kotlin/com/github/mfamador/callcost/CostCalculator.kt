@@ -1,5 +1,6 @@
 package com.github.mfamador.callcost
 
+import com.github.mfamador.callcost.exception.InvalidInputException
 import com.github.mfamador.callcost.model.CallRecord
 import java.io.File
 import java.time.Duration
@@ -10,18 +11,18 @@ object CostCalculator {
     fun calculate(callLogFile: String) = calculate(File(callLogFile).useLines { it.toList() })
 
     fun calculate(callLog: List<String>): Double {
-        val records = callLog.map { parseRecord(it) }.groupBy { it.from }
-        val durations = records.map { it.key to it.value.sumByDouble { it.duration.toDouble() } }
+        val recordsByCaller = callLog.map { parseRecord(it) }.groupBy { it.from }
+        val durations = recordsByCaller.map { it.key to it.value.sumByDouble { it.duration.toDouble() } }
         val maxDuration = durations.maxBy { it.second }?.second
         val discardCallers = durations.filter { it.second == maxDuration }.map { it.first }
 
-        return records.map { it.key to it.value.sumByDouble { it.cost.toDouble() } }
+        return recordsByCaller.map { it.key to it.value.sumByDouble { it.cost.toDouble() } }
                 .filter { !discardCallers.contains(it.first) }.map { it.second }.sum().div(100)
     }
 
     private fun parseRecord(callLog: String): CallRecord {
-        val elements = callLog.split(";")
-        if (elements.size != 4) throw RuntimeException("Invalid input file")
+        val elements = callLog.trim().split(";")
+        if (elements.size != 4) throw InvalidInputException("Invalid input file")
         return CallRecord(getDuration(elements[0], elements[1]), elements[2], elements[3])
     }
 

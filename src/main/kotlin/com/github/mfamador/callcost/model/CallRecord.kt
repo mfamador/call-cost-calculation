@@ -8,9 +8,9 @@ data class CallRecord(val duration: Long, val from: String, val to: String) {
     init {
         val minutes = ceil(duration.toDouble() / 60).toLong()
         cost = if (minutes < 5)
-            minutes * 60 * 5
+            minutes * 5
         else
-            (minutes-5) * 60 * 2 + (5 * 60 * 5)
+            (minutes-5) * 2 + (5 * 5)
     }
 
     override fun toString(): String = "(duration=$duration, cost=$cost , from=$from , to=$to)"

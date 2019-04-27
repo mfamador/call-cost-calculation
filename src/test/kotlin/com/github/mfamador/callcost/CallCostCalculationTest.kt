@@ -11,19 +11,18 @@ class CallCostCalculationTest {
 
         val totalCost = CostCalculator.calculate(file)
 
-        assertThat(totalCost).isEqualTo(30.6)
+        assertThat(totalCost).isEqualTo(0.51)
     }
 
     @Test
-    fun `A call with 4 min and 1 sec should be charged as 5 min`() {
+    fun `A call with 4 min and 1 sec is charged as 5 min`() {
         val recordList = listOf(
                 "09:10:30;09:15:10;+351914374373;+351215355312",
-                "17:44:04;17:49:30;+351914374373;+351963433432",
                 "09:10:00;09:14:01;+351217538222;+351214434422")
 
         val totalCost = CostCalculator.calculate(recordList)
 
-        assertThat(totalCost).isEqualTo(15.0)
+        assertThat(totalCost).isEqualTo(0.25)
     }
 
     @Test
@@ -35,7 +34,7 @@ class CallCostCalculationTest {
 
         val totalCost = CostCalculator.calculate(recordList)
 
-        assertThat(totalCost).isEqualTo(3.0)
+        assertThat(totalCost).isEqualTo(0.05)
     }
 
     @Test
@@ -48,7 +47,7 @@ class CallCostCalculationTest {
 
         val totalCost = CostCalculator.calculate(recordList)
 
-        assertThat(totalCost).isEqualTo(42.0)
+        assertThat(totalCost).isEqualTo(0.7)
     }
 
     @Test
