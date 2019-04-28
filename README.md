@@ -32,6 +32,9 @@ As for output, we're expecting that your code print the total in decimal format,
 
 # Execute exercise
 
+```
 ./gradlew build
+
 ./calculate-cost.sh input_file
+```
 
