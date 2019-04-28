@@ -8,6 +8,7 @@ import java.time.Duration
 import java.time.LocalTime.parse
 
 object CostCalculator {
+
     fun costInEuros(callLogFile: String) = costInCents(File(callLogFile).useLines { it.toList() }).toDouble() / 100
 
     fun costInCents(callLog: List<String>): Long {
@@ -34,5 +35,4 @@ object CostCalculator {
         else
             duration
     }
-
 }

@@ -14,27 +14,25 @@ Calculate the total cost for these calls.
 
 Here's a sample file:
 
-09:11:30;09:15:22;+351914374373;+351215355312
-15:20:04;15:23:49;+351217538222;+351214434422
-16:43:02;16:50:20;+351217235554;+351329932233
-17:44:04;17:49:30;+351914374373;+351963433432
+    09:11:30;09:15:22;+351914374373;+351215355312
+    15:20:04;15:23:49;+351217538222;+351214434422
+    16:43:02;16:50:20;+351217235554;+351329932233
+    17:44:04;17:49:30;+351914374373;+351963433432
 
 ## Interface
 
 The interface we're expecting is:
 
-  $ your_script input_file
+    $ your_script input_file
+
 
 As for output, we're expecting that your code print the total in decimal format, with no currency symbols; e.g.:
 
-  15.05
-
+    15.05
 
 # Execute exercise
 
-```
-./gradlew build
+    ./gradlew build
 
-./calculate-cost.sh input_file
-```
+    ./calculate-cost.sh input_file
 
