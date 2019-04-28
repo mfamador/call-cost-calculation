@@ -7,7 +7,7 @@ Given a list of calls with the following format:
 And the following rules:
 
  - The first 5 minutes of each call are billed at 5 cents per minute
- - The remainer of the call is billed at 2 cents per minute
+ - The remainder of the call is billed at 2 cents per minute
  - The caller with the highest total call duration of the day will not be charged (i.e., the caller that has the highest total call duration among all of its calls)
 
 Calculate the total cost for these calls.
