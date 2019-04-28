@@ -18,8 +18,7 @@ object CostCalculator {
         val maxDuration = durationByCaller.maxBy { it.value }?.value
         val excludedCallers = durationByCaller.filter { it.value == maxDuration }.map { it.key }
 
-        return recordsByCaller.filter { !excludedCallers.contains(it.key) }.values.flatten()
-                .map { it.cost }.sum()
+        return recordsByCaller.filter { !excludedCallers.contains(it.key) }.values.flatten().map { it.cost }.sum()
     }
 
     fun parseRecord(callLog: String): CallRecord {
@@ -30,9 +29,6 @@ object CostCalculator {
 
     private fun duration(start: String, end: String): Duration {
         val duration = Duration.between(parse(start), parse(end))
-        return if (duration.isNegative)
-            duration.plusDays(1)
-        else
-            duration
+        return if (duration.isNegative) duration.plusDays(1) else duration
     }
 }
