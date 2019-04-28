@@ -25,7 +25,6 @@ The interface we're expecting is:
 
     $ your_script input_file
 
-
 As for output, we're expecting that your code print the total in decimal format, with no currency symbols; e.g.:
 
     15.05
