@@ -29,6 +29,7 @@ As for output, we're expecting that your code print the total in decimal format,
 
     15.05
 
+
 # Execute exercise
 
     ./gradlew build
