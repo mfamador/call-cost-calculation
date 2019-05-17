@@ -13,13 +13,10 @@ object CostCalculator {
 
     fun costInCents(callLog: List<String>): Long {
         val recordsByCaller = callLog.map { parseRecord(it) }.groupBy { it.from }
-
         val durationByCaller = recordsByCaller.map { it.key to it.value.sumByLong { it.duration } }.toMap()
         val maxDuration = durationByCaller.maxBy { it.value }?.value
         val excludedCallers = durationByCaller.filter { it.value == maxDuration }.map { it.key }
-
-        return recordsByCaller.filter { !excludedCallers.contains(it.key) }
-                .values.flatten().map { it.cost }.sum()
+        return recordsByCaller.filterKeys { !excludedCallers.contains(it) }.values.flatten().map { it.cost }.sum()
     }
 
     fun parseRecord(callLog: String): CallRecord {
